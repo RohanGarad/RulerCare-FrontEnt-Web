@@ -4,22 +4,22 @@ phases:
   install:
     commands:
       - echo Installing Node.js...
-      - curl -sL https://deb.nodesource.com/setup_16.x | bash - # Adjust for the required Node.js version
-      - apt-get install -y nodejs
+      - curl -sL https://rpm.nodesource.com/setup_16.x | bash -
+      - yum install -y nodejs
   pre_build:
     commands:
       - echo Preparing environment...
-      - npm install # Install dependencies
+      - npm install
   build:
     commands:
       - echo Building the application...
-      - npm run build # Replace with your specific build command
+      - npm run build
   post_build:
     commands:
       - echo Build completed successfully!
 
 artifacts:
   files:
-    - '**/*' # Include all files
+    - '**/*'
   discard-paths: no
   base-directory: build
