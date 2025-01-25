@@ -2,21 +2,18 @@ version: 0.2
 
 phases:
   install:
-    runtime-versions:
-      nodejs: 16 # Specify Node.js version or any required runtime
     commands:
-      - echo Installing dependencies...
-
+      - echo Installing Node.js...
+      - curl -sL https://deb.nodesource.com/setup_16.x | bash - # Adjust for the required Node.js version
+      - apt-get install -y nodejs
   pre_build:
     commands:
       - echo Preparing environment...
-      - npm install # Example command to install dependencies
-
+      - npm install # Install dependencies
   build:
     commands:
       - echo Building the application...
-      - npm run build # Replace with your build command
-
+      - npm run build # Replace with your specific build command
   post_build:
     commands:
       - echo Build completed successfully!
@@ -24,5 +21,5 @@ phases:
 artifacts:
   files:
     - '**/*' # Include all files
-  discard-paths: no # Maintain folder structure
-  base-directory: build # Specify the directory containing build output
+  discard-paths: no
+  base-directory: build
